@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Helpers - TransitAssist</title>
+
+    <link rel="stylesheet"
+          href="/css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="/" class="logo">
+                TransitAssist
+            </a>
+
+            <div class="nav-links">
+
+                <a href="/">
+                    Home
+                </a>
+
+                <a href="/request_add.html">
+                    Request Assistance
+                </a>
+
+                <a href="/requests.html">
+                    View Requests
+                </a>
+
+                <a href="/helper.html"
+                   class="active">
+                    Helpers
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Helper List Page -->
+    <main class="page-container">
+
+        <div class="container">
+
+            <!-- Page Heading -->
+            <div class="page-header">
+
+                <div>
+
+                    <h1>
+                        Helper List
+                    </h1>
+
+                    <p class="subtitle">
+                        View and manage available transit assistance helpers
+                    </p>
+
+                </div>
+
+                <!-- Add Helper Button -->
+                <button
+                    type="button"
+                    id="showAddHelperButton"
+                    class="button primary-button">
+
+                    + Add New Helper
+
+                </button>
+
+            </div>
+
+
+            <!-- Add Helper Form -->
+            <div
+                id="addHelperFormContainer"
+                class="form-container"
+                style="display: none;">
+
+                <h2>
+                    Add New Helper
+                </h2>
+
+                <p class="subtitle">
+                    Enter the helper details below
+                </p>
+
+
+                <form id="addHelperForm">
+
+
+                    <!-- Helper Name -->
+                    <div class="form-group">
+
+                        <label for="helperName">
+                            Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="helperName"
+                            name="name"
+                            placeholder="Enter helper name"
+                            required>
+
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="form-group">
+
+                        <label for="helperEmail">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="helperEmail"
+                            name="email"
+                            placeholder="Enter email address"
+                            required>
+
+                    </div>
+
+
+                    <!-- Phone -->
+                    <div class="form-group">
+
+                        <label for="helperPhone">
+                            Phone
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="helperPhone"
+                            name="phone"
+                            placeholder="Enter phone number"
+                            required>
+
+                    </div>
+
+
+                    <!-- Assistance Type -->
+                    <div class="form-group">
+
+                        <label for="helperAssistanceType">
+                            Assistance Type
+                        </label>
+
+                        <select
+                            id="helperAssistanceType"
+                            name="assistanceType"
+                            required>
+
+                            <option value="">
+                                Select assistance type
+                            </option>
+
+                            <option value="Wheelchair Assistance">
+                                Wheelchair Assistance
+                            </option>
+
+                            <option value="Walking Assistance">
+                                Walking Assistance
+                            </option>
+
+                            <option value="Visual Assistance">
+                                Visual Assistance
+                            </option>
+
+                            <option value="Hearing Assistance">
+                                Hearing Assistance
+                            </option>
+
+                            <option value="General Assistance">
+                                General Assistance
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Availability -->
+                    <div class="form-group">
+
+                        <label for="helperAvailable">
+                            Available
+                        </label>
+
+                        <select
+                            id="helperAvailable"
+                            name="available"
+                            required>
+
+                            <option value="">
+                                Select availability
+                            </option>
+
+                            <option value="true">
+                                Yes
+                            </option>
+
+                            <option value="false">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Form Message -->
+                    <p
+                        id="helperFormMessage"
+                        style="margin-top: 10px;">
+                    </p>
+
+
+                    <!-- Form Buttons -->
+                    <div class="action-bar">
+
+                        <button
+                            type="submit"
+                            class="button primary-button">
+
+                            Add Helper
+
+                        </button>
+
+                        <button
+                            type="button"
+                            id="cancelAddHelperButton"
+                            class="button secondary-button">
+
+                            Cancel
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- Helper Table -->
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Name</th>
+
+                            <th>Email</th>
+
+                            <th>Phone</th>
+
+                            <th>Assistance Type</th>
+
+                            <th>Available</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="helperTableBody">
+
+                        <!--
+                            JavaScript will load helpers here
+                            using GET /helpers
+                        -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Workload Button -->
+            <div class="action-bar">
+
+                <a
+                    href="/workload.html"
+                    class="button primary-button">
+
+                    View Helper Workload
+
+                </a>
+
+            </div>
+
+
+            <!-- Back to Home -->
+            <div class="page-actions">
+
+                <a
+                    href="/"
+                    class="link-button secondary-button">
+
+                    ← Back to Home
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>

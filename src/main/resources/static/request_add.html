@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Request Assistance - TransitAssist</title>
+
+    <link rel="stylesheet"
+          href="/css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="/" class="logo">
+                TransitAssist
+            </a>
+
+            <div class="nav-links">
+
+                <a href="/">
+                    Home
+                </a>
+
+                <a href="/request_add.html"
+                   class="active">
+                    Request Assistance
+                </a>
+
+                <a href="/requests.html">
+                    View Requests
+                </a>
+
+                <a href="/helper.html">
+                    Helpers
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="page-container">
+
+        <div class="form-card">
+
+            <h1>
+                Request Assistance
+            </h1>
+
+            <p class="page-subtitle">
+                Enter your transit assistance details below
+            </p>
+
+
+            <!-- Assistance Request Form -->
+            <form id="requestForm">
+
+
+                <!-- User ID -->
+                <div class="form-group">
+
+                    <label for="userId">
+                        User ID
+                    </label>
+
+                    <input
+                        type="number"
+                        id="userId"
+                        name="userId"
+                        placeholder="Enter your user ID"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Pickup Point -->
+                <div class="form-group">
+
+                    <label for="pickupPoint">
+                        Pickup Point
+                    </label>
+
+                    <input
+                        type="text"
+                        id="pickupPoint"
+                        name="pickupPoint"
+                        placeholder="Enter pickup point"
+                        minlength="2"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Destination -->
+                <div class="form-group">
+
+                    <label for="destination">
+                        Destination
+                    </label>
+
+                    <input
+                        type="text"
+                        id="destination"
+                        name="destination"
+                        placeholder="Enter destination"
+                        minlength="2"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Trip Date -->
+                <div class="form-group">
+
+                    <label for="tripDate">
+                        Trip Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="tripDate"
+                        name="tripDate"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Pickup Time -->
+                <div class="form-group">
+
+                    <label for="pickupTime">
+                        Pickup Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="pickupTime"
+                        name="pickupTime"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- End Time -->
+                <div class="form-group">
+
+                    <label for="endTime">
+                        End Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="endTime"
+                        name="endTime"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Assistance Type -->
+                <div class="form-group">
+
+                    <label for="assistanceType">
+                        Assistance Type
+                    </label>
+
+                    <select
+                        id="assistanceType"
+                        name="assistanceType"
+                        required
+                    >
+
+                        <option value="">
+                            Select assistance type
+                        </option>
+
+                        <option value="Wheelchair">
+                            Wheelchair
+                        </option>
+
+                        <option value="Escort">
+                            Escort
+                        </option>
+
+                        <option value="Both">
+                            Wheelchair + Escort
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Save Button -->
+                <button
+                    type="submit"
+                    class="button save-button">
+
+                    Submit Assistance Request
+
+                </button>
+
+            </form>
+
+
+            <!-- Success / Error Message -->
+            <p id="message"></p>
+
+
+            <!-- Navigation Buttons -->
+            <div class="page-actions">
+
+                <a href="/"
+                   class="link-button secondary-button">
+
+                    ← Back to Home
+
+                </a>
+
+                <a href="/requests.html"
+                   class="link-button primary-button">
+
+                    View Requests →
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>

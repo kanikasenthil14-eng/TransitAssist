@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Assistance Requests - TransitAssist</title>
+
+    <link rel="stylesheet"
+          href="/css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="/" class="logo">
+                TransitAssist
+            </a>
+
+            <div class="nav-links">
+
+                <a href="/">
+                    Home
+                </a>
+
+                <a href="/request_add.html">
+                    Request Assistance
+                </a>
+
+                <a href="/requests.html"
+                   class="active">
+                    View Requests
+                </a>
+
+                <a href="/helper.html">
+                    Helpers
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Assistance Request List Page -->
+    <main class="page-container">
+
+        <div class="container">
+
+            <h1>
+                Assistance Requests
+            </h1>
+
+            <p class="subtitle">
+                View and manage all transit assistance requests
+            </p>
+
+
+            <!-- Add Request Button -->
+            <div class="action-bar">
+
+                <a href="/request_add.html"
+                   class="button primary-button">
+
+                    + Request Assistance
+
+                </a>
+
+            </div>
+
+
+            <!-- Request Table -->
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>User</th>
+
+                            <th>Pickup Point</th>
+
+                            <th>Destination</th>
+
+                            <th>Date</th>
+
+                            <th>Pickup Time</th>
+
+                            <th>End Time</th>
+
+                            <th>Assistance Type</th>
+
+                            <th>Helper</th>
+
+                            <th>Status</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="requestTableBody">
+
+                        <!--
+                            JavaScript will load assistance
+                            requests here using GET /requests
+                        -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Back to Home -->
+            <div class="page-actions">
+
+                <a href="/"
+                   class="link-button secondary-button">
+
+                    ← Back to Home
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Helper Workload - TransitAssist</title>
+
+    <link rel="stylesheet"
+          href="/css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="/" class="logo">
+                TransitAssist
+            </a>
+
+            <div class="nav-links">
+
+                <a href="/">
+                    Home
+                </a>
+
+                <a href="/request_add.html">
+                    Request Assistance
+                </a>
+
+                <a href="/requests.html">
+                    View Requests
+                </a>
+
+                <a href="/helper.html"
+                   class="active">
+                    Helpers
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Helper Workload Page -->
+    <main class="page-container">
+
+        <div class="form-card">
+
+            <h1>
+                Helper Workload
+            </h1>
+
+            <p class="page-subtitle">
+                View a helper's assistance requests for a particular day
+            </p>
+
+
+            <!-- Workload Form -->
+            <form id="workloadForm">
+
+
+                <!-- Helper ID -->
+                <div class="form-group">
+
+                    <label for="helperId">
+                        Helper ID
+                    </label>
+
+                    <input
+                        type="number"
+                        id="helperId"
+                        name="helperId"
+                        placeholder="Enter helper ID"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Date -->
+                <div class="form-group">
+
+                    <label for="workloadDate">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="workloadDate"
+                        name="workloadDate"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Search Button -->
+                <button
+                    type="submit"
+                    class="button save-button">
+
+                    View Workload
+
+                </button>
+
+            </form>
+
+
+            <!-- Message -->
+            <p id="message"></p>
+
+        </div>
+
+
+        <!-- Workload Results -->
+        <div class="container">
+
+            <h1>
+                Workload Details
+            </h1>
+
+            <p class="subtitle">
+                Assistance requests assigned to the selected helper
+            </p>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>User</th>
+
+                            <th>Pickup Point</th>
+
+                            <th>Destination</th>
+
+                            <th>Date</th>
+
+                            <th>Pickup Time</th>
+
+                            <th>End Time</th>
+
+                            <th>Assistance Type</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="workloadTableBody">
+
+                        <!--
+                            JavaScript will load helper workload here
+                        -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Back Buttons -->
+            <div class="page-actions">
+
+                     <a href="/helper.html"
+                   class="link-button secondary-button">
+
+                    ← Back to Helpers
+
+                </a>
+
+                <a href="/"
+                   class="link-button primary-button">
+
+                    Back to Home
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>
