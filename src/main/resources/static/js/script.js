@@ -106,7 +106,7 @@ if (requestTableBody) {
 
                 requestTableBody.innerHTML = `
                     <tr>
-                        <td colspan="10">
+                        <td colspan="11">
                             No assistance requests found.
                         </td>
                     </tr>
@@ -118,15 +118,24 @@ if (requestTableBody) {
             requests.forEach(request => {
 
                 const row = document.createElement("tr");
+                const statusClass = {
+                    REQUESTED: "status-requested",
+                    ASSIGNED: "status-assigned",
+                    COMPLETED: "status-completed",
+                    CANCELLED: "status-cancelled"
+                }[request.status] || "";
+                const actionsDisabled = ["COMPLETED", "CANCELLED"].includes(request.status)
+                    ? "disabled"
+                    : "";
 
                 row.innerHTML = `
 
                     <td>
-                        ${request.requestId || "-"}
+                        ${request.requestid || "-"}
                     </td>
 
                     <td>
-                        ${request.userId || "-"}
+                        ${request.user?.name || "-"}
                     </td>
 
                     <td>
@@ -138,15 +147,11 @@ if (requestTableBody) {
                     </td>
 
                     <td>
-                        ${request.assistanceType || "-"}
+                        ${request.tripDate || "-"}
                     </td>
 
                     <td>
-                        ${request.requestDate || "-"}
-                    </td>
-
-                    <td>
-                        ${request.startTime || "-"}
+                        ${request.pickupTime || "-"}
                     </td>
 
                     <td>
@@ -154,26 +159,39 @@ if (requestTableBody) {
                     </td>
 
                     <td>
-                        ${request.status || "-"}
+                        ${request.assistanceType || "-"}
+                    </td>
+
+                    <td>
+                        ${request.helper?.name || "-"}
+                    </td>
+
+                    <td>
+                        <span class="status ${statusClass}">
+                            ${request.status || "-"}
+                        </span>
                     </td>
 
                     <td>
 
                         <button
                             class="button secondary-button"
-                            onclick="assignHelper(${request.requestId})">
+                            onclick="assignHelper(${request.requestid})"
+                            ${actionsDisabled}>
                             Assign
                         </button>
 
                         <button
                             class="button secondary-button"
-                            onclick="cancelRequest(${request.requestId})">
+                            onclick="cancelRequest(${request.requestid})"
+                            ${actionsDisabled}>
                             Cancel
                         </button>
 
                         <button
                             class="button primary-button"
-                            onclick="completeRequest(${request.requestId})">
+                            onclick="completeRequest(${request.requestid})"
+                            ${actionsDisabled}>
                             Complete
                         </button>
 
@@ -193,7 +211,7 @@ if (requestTableBody) {
 
             requestTableBody.innerHTML = `
                 <tr>
-                    <td colspan="10">
+                    <td colspan="11">
                         Failed to load assistance requests.
                     </td>
                 </tr>
@@ -245,8 +263,8 @@ function assignHelper(requestId) {
         console.error("Error:", error);
 
         alert(
-            "Failed to assign helper. " +
-            "Please check the Helper ID and helper availability."
+            "Could not assign a helper. Check the Helper ID, availability, " +
+            "and request status."
         );
 
     });
@@ -297,8 +315,8 @@ function cancelRequest(requestId) {
         console.error("Error:", error);
 
         alert(
-            "Unable to cancel request. " +
-            "Completed requests cannot be cancelled."
+            "Only active requests can be cancelled. " +
+            "Completed and cancelled requests are final."
         );
 
     });
@@ -348,7 +366,10 @@ function completeRequest(requestId) {
 
         console.error("Error:", error);
 
-        alert("Unable to complete request.");
+        alert(
+            "Only active requests can be completed. " +
+            "Completed and cancelled requests are final."
+        );
 
     });
 

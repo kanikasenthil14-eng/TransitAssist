@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -43,26 +45,35 @@ public class AssistanceRequestController {
 
     // Complete assistance request
     @PutMapping("/requests/{id}/complete")
-    public AssistanceRequest completeRequest(@PathVariable Long id) {
-        return assistanceRequestService.completeRequest(id);
+    public ResponseEntity<AssistanceRequest> completeRequest(@PathVariable Long id) {
+        AssistanceRequest request = assistanceRequestService.completeRequest(id);
+        return request == null
+                ? ResponseEntity.status(HttpStatus.CONFLICT).build()
+                : ResponseEntity.ok(request);
     }
 
     // Cancel assistance request
     @PutMapping("/requests/{id}/cancel")
-    public AssistanceRequest cancelRequest(@PathVariable Long id) {
-        return assistanceRequestService.cancelRequest(id);
+    public ResponseEntity<AssistanceRequest> cancelRequest(@PathVariable Long id) {
+        AssistanceRequest request = assistanceRequestService.cancelRequest(id);
+        return request == null
+                ? ResponseEntity.status(HttpStatus.CONFLICT).build()
+                : ResponseEntity.ok(request);
     }
 
     // Assign helper to assistance request
     @PutMapping("/requests/{requestId}/assign/{helperId}")
-    public AssistanceRequest assignHelper(
+        public ResponseEntity<AssistanceRequest> assignHelper(
             @PathVariable Long requestId,
             @PathVariable Long helperId) {
 
-        return assistanceRequestService.assignHelper(
+        AssistanceRequest request = assistanceRequestService.assignHelper(
                 requestId,
                 helperId
         );
+        return request == null
+            ? ResponseEntity.status(HttpStatus.CONFLICT).build()
+            : ResponseEntity.ok(request);
     }
 
     // Delete assistance request

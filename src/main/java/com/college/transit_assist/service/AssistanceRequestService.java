@@ -81,6 +81,7 @@ public class AssistanceRequestService {
                 assistanceRequestRepository.findById(id).orElse(null);
 
         if (request == null ||
+            "COMPLETED".equals(request.getStatus()) ||
             "CANCELLED".equals(request.getStatus())) {
 
             return null;
@@ -97,7 +98,8 @@ public class AssistanceRequestService {
                 assistanceRequestRepository.findById(id).orElse(null);
 
         if (request == null ||
-            "COMPLETED".equals(request.getStatus())) {
+            "COMPLETED".equals(request.getStatus()) ||
+            "CANCELLED".equals(request.getStatus())) {
 
             return null;
         }
